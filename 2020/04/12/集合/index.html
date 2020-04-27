@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="集合框架的概述 集合、数组都是对多个数据进行存储操作的结构，简称java容器 说明:此时的存储，主要指得是内存内面上的存储，不涉及到持久化存储，比如（.txt,  .jpg,数据库中的存储）   数组在存储多个数据的特点 一旦初始化后，长度就确定了，不可以改变 数组一旦定义好，元素类型也确定了，只能存储指定类型的数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合">
+<meta property="og:url" content="http://yoursite.com/2020/04/12/集合/index.html">
+<meta property="og:site_name" content="老稳的个人博客">
+<meta property="og:description" content="集合框架的概述 集合、数组都是对多个数据进行存储操作的结构，简称java容器 说明:此时的存储，主要指得是内存内面上的存储，不涉及到持久化存储，比如（.txt,  .jpg,数据库中的存储）   数组在存储多个数据的特点 一旦初始化后，长度就确定了，不可以改变 数组一旦定义好，元素类型也确定了，只能存储指定类型的数据">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-15T15:33:47.154Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="集合">
+<meta name="twitter:description" content="集合框架的概述 集合、数组都是对多个数据进行存储操作的结构，简称java容器 说明:此时的存储，主要指得是内存内面上的存储，不涉及到持久化存储，比如（.txt,  .jpg,数据库中的存储）   数组在存储多个数据的特点 一旦初始化后，长度就确定了，不可以改变 数组一旦定义好，元素类型也确定了，只能存储指定类型的数据">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/12/集合/">
+
+
+
+
+
+  <title>集合 | 老稳的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+   <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老稳的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/集合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="老 稳">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老稳的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">集合</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-12T18:56:42+08:00">
+                2020-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/12/集合/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/12/集合/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+        <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+        </div>
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="集合框架的概述"><a href="#集合框架的概述" class="headerlink" title="集合框架的概述"></a>集合框架的概述</h2><ol>
+<li>集合、数组都是对多个数据进行存储操作的结构，简称java容器<ul>
+<li>说明:此时的存储，主要指得是内存内面上的存储，不涉及到持久化存储，比如（.txt,  .jpg,数据库中的存储）</li>
+</ul>
+</li>
+<li>数组在存储多个数据的特点<ol>
+<li>一旦初始化后，长度就确定了，不可以改变</li>
+<li>数组一旦定义好，元素类型也确定了，只能存储指定类型的数据</li>
+<li><a id="more"></a>
+
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="Java集合课分为Collection-和-Map-两种体系"><a href="#Java集合课分为Collection-和-Map-两种体系" class="headerlink" title="Java集合课分为Collection 和 Map 两种体系"></a>Java集合课分为Collection 和 Map 两种体系</h3><ol>
+<li>Collection接口：单列集合，用来存储一个一个的对象<ol>
+<li>List:元素有序、可重复的集合     –&gt;    “  动态数组  ”<ol>
+<li>ArrayList、LinkedList、Voctor</li>
+</ol>
+</li>
+<li>Set:元素无序、不可以重复         –&gt; “  数学中的集合 ”<ol>
+<li>HashSet、LinkedHashSet、TreeSet</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Map接口：双列集合，用来存储一对一对的数据  “ key - value  “ 键值对      –&gt;”函数“<ol>
+<li>​    HashMap、LinkedHashMap、TreeMap、Hashtable、Properties</li>
+</ol>
+</li>
+</ol>
+<h3 id="Collection接口中的方法使用"><a href="#Collection接口中的方法使用" class="headerlink" title="Collection接口中的方法使用"></a>Collection接口中的方法使用</h3><ol>
+<li>size() :返回 集合中的元素个数</li>
+<li>add(Object obj) :向集合中添加数据</li>
+<li>addAll(collection c ) :将指定集合中的所有元素添加到当前集合中</li>
+<li>isEmpty(  ): 判断集合是否有元素， 如果有返回 true 否则 返回 false</li>
+<li>clear( ): 清空集合元素</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"> <span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Collection coll = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="comment">// size() 返回 集合中的元素个数</span></span><br><span class="line">    System.out.println(coll.size());</span><br><span class="line">    <span class="comment">// add(Object obj) 向集合中添加数据</span></span><br><span class="line">    coll.add(<span class="string">"Java"</span>);</span><br><span class="line">    coll.add(<span class="number">2020</span>);<span class="comment">// 自动装箱</span></span><br><span class="line">    coll.add(<span class="keyword">new</span> Date());</span><br><span class="line">    <span class="keyword">int</span> size = coll.size();</span><br><span class="line">    System.out.println(size);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// addAll(collection c ) 将指定集合中的所有元素添加到当前集合中</span></span><br><span class="line">    Collection coll1 = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    coll1.add(coll);</span><br><span class="line">    System.out.println(coll.size());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// clear() 清空集合元素</span></span><br><span class="line">    coll.clear();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// isEmpty() 判断集合是否有元素， 如果有返回 true 否则 返回 false</span></span><br><span class="line">    System.out.println(coll.isEmpty());</span><br></pre></td></tr></table></figure>
+
+<hr>
+<ol start="6">
+<li><p>contains(Object obj )判断 obj 是否包含在集合中，如果包含返回True，不包含返回 false</p>
+<ol>
+<li>containsAll( Collection coll  )判断集合coll 是否包含在当前集合中</li>
+</ol>
+<ul>
+<li><p>contains（）方法是使用 equals()来进行判断的</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Collection coll = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        coll.add(<span class="number">123</span>);</span><br><span class="line">        coll.add(<span class="number">456</span>);<span class="comment">// 自动装箱</span></span><br><span class="line">        coll.add(<span class="keyword">new</span> Person(<span class="string">"张三"</span>,<span class="number">23</span>));</span><br><span class="line">        coll.add(<span class="keyword">true</span>);</span><br><span class="line">        coll.add(<span class="keyword">new</span> String(<span class="string">"Tom"</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// contains(Object obj )判断 obj 是否包含在集合中，如果包含返回True，不包含返回 false</span></span><br><span class="line">        <span class="comment">// contains（）方法是使用 equals()来进行判断的</span></span><br><span class="line">        <span class="keyword">boolean</span> tom = coll.contains(<span class="string">"Tom"</span>);</span><br><span class="line">        System.out.println(tom);</span><br><span class="line">        System.out.println(coll.contains(<span class="number">1234</span>));</span><br><span class="line">        System.out.println(coll.contains(<span class="keyword">new</span> String(<span class="string">"Tom"</span>)));</span><br><span class="line"></span><br><span class="line">        System.out.println(coll.contains(<span class="keyword">new</span> Person(<span class="string">"张三"</span>,<span class="number">23</span>)));<span class="comment">//</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<ol start="7">
+<li><p>remove(Object obj):从当前集合中移除obj元素</p>
+</li>
+<li><p>removeAll(ection coll)：从当前集合中移除coll集合中的所有元素</p>
+<ol>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Collection coll = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        coll.add(<span class="number">123</span>);</span><br><span class="line">        coll.add(<span class="number">456</span>);</span><br><span class="line">        coll.add(<span class="keyword">new</span> Person(<span class="string">"李四"</span>,<span class="number">23</span>));</span><br><span class="line">        coll.add(<span class="keyword">false</span>);</span><br><span class="line">        coll.add(<span class="keyword">new</span> String(<span class="string">"Hello"</span>));</span><br><span class="line">        System.out.println(coll);<span class="comment">//[123, 456, Person&#123;name='李四', age=23&#125;, false, Hello]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        remove(Object obj) 从当前集合中移除 obj 元素 ,如果成功返回 true，否则返回 false</span></span><br><span class="line">        <span class="keyword">boolean</span> hello = coll.remove(<span class="string">"Hello"</span>);</span><br><span class="line">        System.out.println(hello);<span class="comment">// true</span></span><br><span class="line">        <span class="keyword">boolean</span> hello1 = coll.remove(<span class="string">"hello"</span>);</span><br><span class="line">        System.out.println(hello1);<span class="comment">//false</span></span><br><span class="line">        System.out.println(coll);<span class="comment">//[123, 456, Person&#123;name='李四', age=23&#125;, false]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// removeAll(Collection coll)</span></span><br><span class="line"><span class="comment">//        Collection coll1 = new ArrayList();</span></span><br><span class="line"><span class="comment">//        coll1.add(123);</span></span><br><span class="line"><span class="comment">//        coll1.add(456);</span></span><br><span class="line">        Collection coll1 = Arrays.asList(<span class="number">123</span>,<span class="number">456</span>);</span><br><span class="line">        coll.removeAll(coll1);</span><br><span class="line">        System.out.println(coll); <span class="comment">//[Person&#123;name='李四', age=23&#125;, false]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<ol start="9">
+<li><p>retainAll(Collection coll)返回当前集合和coll集合中的相同元素给当前集合数学中的交集</p>
+</li>
+<li><p>equals(Object boj): 判断当前集合和 指定的obj集合的元素是否相同，如果相同返回true 否则返回false  </p>
+<ol>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Collection coll = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        coll.add(<span class="number">123</span>);</span><br><span class="line">        coll.add(<span class="number">456</span>);</span><br><span class="line">        coll.add(<span class="keyword">new</span> Person(<span class="string">"李四"</span>,<span class="number">23</span>));</span><br><span class="line">        coll.add(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        Collection coll1 = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        coll1.add(<span class="number">123</span>);</span><br><span class="line">        coll1.add(<span class="number">456</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// retainAll(Collection coll) 返回当前集合与 指定 coll集合中相同的元素给当前集合</span></span><br><span class="line">        <span class="comment">// 如果有相同的元素返回一个 true 否则返回false</span></span><br><span class="line">        <span class="keyword">boolean</span> b = coll.retainAll(coll1);</span><br><span class="line">        System.out.println(b);</span><br><span class="line">        System.out.println(coll);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// equals(Object obj) 判断两个集合中的元素是否相同，如果相同返回true，否则返回false</span></span><br><span class="line">        Collection coll2 = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        coll2.add(<span class="number">123</span>);</span><br><span class="line">        coll2.add(<span class="number">456</span>);</span><br><span class="line">        coll2.add(<span class="keyword">new</span> Person(<span class="string">"李四"</span>,<span class="number">23</span>));</span><br><span class="line">        coll2.add(<span class="keyword">false</span>);</span><br><span class="line">        <span class="keyword">boolean</span> equals = coll.equals(coll1);</span><br><span class="line">        <span class="keyword">boolean</span> equals1 = coll.equals(coll2);</span><br><span class="line">        System.out.println(equals);<span class="comment">// true</span></span><br><span class="line">        System.out.println(equals1);<span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>hashCode( ): 返回当前对象的哈希值</p>
+</li>
+<li><p>toArray(  ):  把集合转换为数组</p>
+</li>
+<li><p>Arrays.asList( ): 把数组转换为集合</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Collection coll = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        coll.add(<span class="number">123</span>);</span><br><span class="line">        coll.add(<span class="number">456</span>);</span><br><span class="line">        coll.add(<span class="keyword">new</span> Person(<span class="string">"李四"</span>,<span class="number">23</span>));</span><br><span class="line">        coll.add(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// hashcode(): 返回当前集合的哈希值</span></span><br><span class="line">        System.out.println(coll.hashCode());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 集合 ---&gt; 数组  toArray()</span></span><br><span class="line">        Object[] arr = coll.toArray();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            System.out.println(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 数组 ---&gt; 集合  Arrays.asList()</span></span><br><span class="line">        List&lt;String&gt; list = Arrays.asList(<span class="keyword">new</span> String[]&#123;<span class="string">"AA"</span>,<span class="string">"BB"</span>&#125;);</span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">        List list1 = Arrays.asList(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>&#125;);</span><br><span class="line">        System.out.println(list1);<span class="comment">//[[I@722c41f4]</span></span><br><span class="line">        System.out.println(list1.size());<span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">        List list2 = Arrays.asList(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>&#125;);</span><br><span class="line">        System.out.println(list2);<span class="comment">//[[I@722c41f4]</span></span><br><span class="line">        System.out.println(list2.size());<span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">        List list3 = Arrays.asList(<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>);</span><br><span class="line">        System.out.println(list3);<span class="comment">//[1, 3, 5]</span></span><br><span class="line">        System.out.println(list3.size());<span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">        List list4 = Arrays.asList(<span class="keyword">new</span> Integer[]&#123;<span class="number">1</span>,<span class="number">4</span>,<span class="number">25</span>,<span class="number">65</span>&#125;);</span><br><span class="line">        System.out.println(list4);<span class="comment">//[1, 4, 25, 65]</span></span><br><span class="line">        System.out.println(list4.size());<span class="comment">// 4</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="14">
+<li><p>iterator(  ): 返回当前集合的迭代器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Collection list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        list.add(<span class="number">123</span>);</span><br><span class="line">        list.add(<span class="number">456</span>);</span><br><span class="line">        list.add(<span class="keyword">new</span> Person(<span class="string">"李四"</span>,<span class="number">23</span>));</span><br><span class="line">        list.add(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// iterator(): 返回当前集合的迭代器</span></span><br><span class="line">        <span class="comment">// Iterator 只能使用了与集合中</span></span><br><span class="line">        Iterator iterator = list.iterator();</span><br><span class="line"></span><br><span class="line"><span class="comment">//        System.out.println(iterator.next());</span></span><br><span class="line"><span class="comment">//        System.out.println(iterator.next());</span></span><br><span class="line"><span class="comment">//        System.out.println(iterator.next());</span></span><br><span class="line"><span class="comment">//        System.out.println(iterator.next());</span></span><br><span class="line"></span><br><span class="line">       <span class="comment">// System.out.println(iterator.next());// NoSuchElementException</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 不建议 使用</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            System.out.println(iterator.next());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 建议使用 hasNext()</span></span><br><span class="line">        <span class="comment">// 判断集合中是否还有元素，有返回 true ，否则返回false</span></span><br><span class="line">        <span class="keyword">while</span>(iterator.hasNext())&#123; </span><br><span class="line">            <span class="comment">// 指针下移，将下移后集合中指针指向的元素返回</span></span><br><span class="line">            System.out.println(iterator.next());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="List-接口"><a href="#List-接口" class="headerlink" title="List 接口"></a>List 接口</h3><ol>
+<li><p>List 集合中的元素有序，并且可以重复，集合中的元素都有与其对应的顺序索引</p>
+</li>
+<li><p>List接口的实现类有：ArrayList、IinkedList、Vector</p>
+</li>
+<li><p>ArrayList、IinkedList、Vector、三者的异同</p>
+<ul>
+<li><p>相同点：都实现了List接口，存储数据的特点相同，都是有序的，可以重复的</p>
+</li>
+<li><p>不同点：</p>
+<p>ArrayList：作为List接口的主要实现类，线程不安全，效率高，底层是使用Object[] elementDate存储</p>
+<p>LinkedList：对于频繁的插入，删除操作，使用此类效率比ArrayList效率要高；底层使用的是链表的方式存储数据。</p>
+<p>Vector：作为List接口的古老实现类；线程安全，效率低，底层使用Object[] elementDate存储</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="Map-：双列数据，存储key-value对的数据"><a href="#Map-：双列数据，存储key-value对的数据" class="headerlink" title="Map ：双列数据，存储key - value对的数据"></a>Map ：双列数据，存储key - value对的数据</h3><ol>
+<li>HashMap: Map 的主要实现类，线程不安全，效率高，可以存储 null 的 可以 - value<ul>
+<li>LinkedHashMap: HashMap 的子类，保证遍历元素时可以按照添加时的顺序实现遍历<ul>
+<li>原理：在原有的HashMap上添加一对指针，指向前一个元素和后一个元素。对于频繁的遍历操作，LinkedHashMap执行效率比HashMap的执行效率要高</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TreeMap：</li>
+<li>Hashtable: Map的古老实现类<ul>
+<li>properties:</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://www.huanhao.xyz/images/donate/weixin.jpg" alt="老 稳 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://www.huanhao.xyz/images/donate/zhifubao.jpg" alt="老 稳 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/12/枚举类的使用/" rel="next" title="枚举类的使用">
+                <i class="fa fa-chevron-left"></i> 枚举类的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1.jpg" alt="老 稳">
+            
+              <p class="site-author-name" itemprop="name">老 稳</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+           <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/kjhuanhao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.huanhao.xyz" target="_blank" title="huanhaocode">
+                      
+                        <i class="fa fa-fw fa-globe"></i>huanhaocode</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.huanhao.xyz" title="HuanHaoCode" target="_blank">HuanHaoCode</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#集合框架的概述"><span class="nav-number">1.</span> <span class="nav-text">集合框架的概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java集合课分为Collection-和-Map-两种体系"><span class="nav-number">1.1.</span> <span class="nav-text">Java集合课分为Collection 和 Map 两种体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collection接口中的方法使用"><span class="nav-number">1.2.</span> <span class="nav-text">Collection接口中的方法使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List-接口"><span class="nav-number">1.3.</span> <span class="nav-text">List 接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-：双列数据，存储key-value对的数据"><span class="nav-number">1.4.</span> <span class="nav-text">Map ：双列数据，存储key - value对的数据</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">老 稳</span>
+  
+</div>
+<span id="busuanzi_container_site_pv">
+    本站总访问量:<span id="busuanzi_value_site_pv"></span>次
+</span>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+   <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'sDBMKTVaCkgHnSj7SI0XdQQx-gzGzoHsz',
+        appKey: 'GdlusCelDLjPX1PGFOcNp5oS',
+        placeholder: '在这里留下你的看法或者疑问',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+</body>
+</html>
+
